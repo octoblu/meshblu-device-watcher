@@ -1,6 +1,6 @@
 {
   "name": "meshblu-device-watcher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Meshblu Device Watcher",
   "main": "index.js",
   "scripts": {
@@ -21,9 +21,16 @@
     "coffee-coverage": "^1.0.1",
     "coffee-script": "^1.10.0",
     "istanbul": "^0.4.2",
+    "meshblu-config": "^3.1.1",
+    "meshblu-http": "^5.1.0",
     "mocha": "^2.4.5",
     "mocha-istanbul": "^0.2.0",
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0"
+  },
+  "dependencies": {
+    "debug": "^2.2.0",
+    "lodash": "^4.5.1",
+    "meshblu": "^1.32.0"
   }
 }
