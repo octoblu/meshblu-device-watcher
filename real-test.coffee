@@ -7,11 +7,14 @@ class Tester
     meshbluConfig = new MeshbluConfig().toJSON()
     meshbluHttp   = new MeshbluHttp meshbluConfig
     watcher = new DeviceWatcher {meshbluConfig}
-    watcher.connect (error) =>
+    setTimeout =>
+      console.log 'updating device'
+      meshbluHttp.update meshbluConfig.uuid, 'hello': true
+    , 2000
+    watcher.onConfig (error, config) =>
       return console.error error if error?
-      meshbluHttp.update meshbluConfig.uuid, 'hello': true, =>
-        watcher.on 'config', (device) =>
-          return console.log 'SUCCESS' if device.hello
-          console.error 'Uh oh' 
+      console.log 'SUCCESS' if config.hello
+      console.error 'Uh oh' unless config.hello
+      process.exit 0
 
 new Tester().run()
