@@ -14,12 +14,19 @@ class DeviceWatcher
 
     @meshblu.on 'ready', =>
       debug 'connected'
+
       @meshblu.on 'config', (config) =>
-        debug 'got config'
+        debug 'got config', config.uuid
         callback null, config
+
+      @meshblu.on 'unregister', =>
+        debug 'got unregister'
+        callback null, null
 
     @meshblu.on 'notReady', (error) =>
       debug 'connection error', error
       callback error
+
+
 
 module.exports = DeviceWatcher
